@@ -7,6 +7,7 @@
 <meta name="description" content="Small, humane tools made by AB Sutton Design: Carrierfile and the Stackyard.">
 <meta property="og:title" content="Tools by AB Sutton">
 <meta property="og:image" content="https://absuttondesign.github.io/assets/stackyard.png">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/favicon.png">
 <style>
   :root { --ink:#242424; --muted:#6f6656; --paper:#FBF6EA; --card:#fff; --line:#eadfc6; --on:#FF6719; }
@@ -29,6 +30,11 @@
   .go { margin-top:10px; color:var(--on); font-weight:700; font-size:16px; }
   .tag { display:inline-block; align-self:flex-start; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
     padding:3px 10px; border-radius:999px; background:rgba(255,103,25,.12); color:var(--on); }
+  /* Carrierfile's card wears carrierfile.ai's look: mono type, black ink. */
+  a.tool.cf .name { font:800 24px/1.2 "JetBrains Mono",ui-monospace,Menlo,monospace; }
+  a.tool.cf .what { font-family:"JetBrains Mono",ui-monospace,Menlo,monospace; font-size:15px; }
+  a.tool.cf .go { color:var(--ink); font-family:"JetBrains Mono",ui-monospace,Menlo,monospace; letter-spacing:1px; text-transform:uppercase; font-size:14px; }
+  a.tool.cf .tag { background:transparent; color:var(--ink); border:1.5px solid var(--ink); border-radius:0; font-family:"JetBrains Mono",ui-monospace,Menlo,monospace; }
   footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); font-size:15px; color:var(--muted); }
   footer a { color:inherit; }
 </style>
@@ -38,13 +44,13 @@
   <h1>Tools by AB Sutton</h1>
   <p class="lede">Small, humane tools I've made for working with AI and reading the internet on my own terms.</p>
   <section class="tools">
-    <a class="tool" href="https://carrierfile.ai">
+    <a class="tool cf" href="https://carrierfile.ai">
       <img src="assets/carrierfile.png" alt="Carrierfile: portable AI memory">
       <div class="body">
         <span class="tag">Free</span>
-        <span class="name">Carrierfile</span>
-        <span class="what">One plain-text file that teaches any AI who you are, how you work, and how to behave. Works with ChatGPT, Claude and Gemini. No account needed.</span>
-        <span class="go">carrierfile.ai →</span>
+        <span class="name">carrierfile</span>
+        <span class="what">Raise your AI right. One plain-text file that teaches any AI who you are, how you work, and how to behave. No account needed.</span>
+        <span class="go">Build yours →</span>
       </div>
     </a>
     <a class="tool" href="https://absuttondesign.github.io/stackyard/">

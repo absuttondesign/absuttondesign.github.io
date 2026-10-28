@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review AI Everywhere · She Writes AI</title>
+<meta name="description" content="Read an advance copy of AI Everywhere? Here's a two-minute way to leave a review on Goodreads and Amazon.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #f6f4fb; --surface: #ffffff; --fg: #1f1b2e; --muted: #5f5973; --line: #e1ddeb;
+  --v2: #251E72; --v3: #440D6C; --v4: #73055D; --accent: #5b2a9e; --accent-soft: #efe9f9; --on-accent: #ffffff;
+  --good: #1f7a4d; --warn: #9a5b00;
+  --display: "Literata", Georgia, serif; --body: "Figtree", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #14111d; --surface: #1d192a; --fg: #ece9f5; --muted: #a7a1bb; --line: #322c44;
+  --accent: #bb98ee; --accent-soft: #2a2140; --on-accent: #14111d; --good: #6fd19c; --warn: #f0b860; color-scheme: dark; } }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 var(--body); }
+.wrap { max-width: 760px; margin: 0 auto; padding: 40px max(18px, env(safe-area-inset-left, 0px)) 80px; display: grid; gap: 28px; }
+.eyebrow { text-transform: uppercase; letter-spacing: .09em; font-size: 12px; font-weight: 700; color: var(--accent); }
+h1 { font: 700 clamp(30px, 6vw, 44px)/1.12 var(--display); margin: 6px 0 10px; text-wrap: balance; }
+h2 { font: 700 22px/1.25 var(--display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.lede { color: var(--muted); font-size: 18px; max-width: 60ch; }
+.books { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 560px) { .books { grid-template-columns: 1fr; } .book { grid-template-columns: 96px 1fr; display: grid; align-items: center; } }
+.book { appearance: none; text-align: left; font: inherit; color: inherit; background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 10px; cursor: pointer; display: grid; gap: 10px; transition: border-color .15s, transform .15s; }
+.book img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; display: block; max-width: 100%; }
+.book strong { font: 700 16px/1.3 var(--display); display: block; }
+.book span { color: var(--muted); font-size: 14px; line-height: 1.4; display: block; }
+.book[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.book:hover { transform: translateY(-2px); }
+.book:focus-visible, button:focus-visible, a.btn:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: grid; gap: 14px; }
+.step header { display: flex; gap: 12px; align-items: baseline; }
+.num { flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-weight: 700; display: grid; place-items: center; font-size: 15px; }
+.hint { color: var(--muted); font-size: 15px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 500 14px var(--body); border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.chip:hover { border-color: var(--accent); }
+textarea { width: 100%; min-height: 150px; font: 16px/1.55 var(--body); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; resize: vertical; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+button, a.btn { font: 600 16px var(--body); border-radius: 10px; padding: 11px 18px; border: 2px solid var(--accent); background: var(--accent); color: var(--on-accent); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+button.ghost, a.btn.ghost { background: transparent; color: var(--accent); }
+button:disabled { opacity: .55; cursor: default; }
+a.btn.off { opacity: .55; pointer-events: none; border-style: dashed; }
+.note { font-size: 14px; color: var(--muted); }
+.note.err { color: var(--warn); }
+.ok { color: var(--good); font-weight: 600; }
+label.check { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; }
+label.check input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--accent); flex: none; }
+.platforms { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.platform { border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 8px; align-content: start; }
+.platform b { font-size: 16px; }
+footer { color: var(--muted); font-size: 14px; text-align: center; display: grid; gap: 6px; }
+footer a { color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { .book { transition: none; } .book:hover { transform: none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <div class="eyebrow">She Writes AI · AI Everywhere</div>
+    <h1>Thank you for reading! Two minutes to help these books find readers?</h1>
+    <p class="lede">32 women and nonbinary authors from 18 countries wrote these three volumes. Early reviews are what make new readers trust a book. Yours doesn't need to be long or polished. This page walks you through it.</p>
+  </header>
+
+  <section aria-labelledby="pickH" style="display:grid; gap:12px;">
+    <h2 id="pickH">Which volume did you read?</h2>
+    <div class="books" id="books">
+      <button class="book" type="button" data-vol="2" aria-pressed="false"><img src="img/vol2.jpg" alt="AI Everywhere Volume 2 cover"><div><strong>Volume 2</strong><span>How Women Are Using AI in Business</span></div></button>
+      <button class="book" type="button" data-vol="3" aria-pressed="false"><img src="img/vol3.jpg" alt="AI Everywhere Volume 3 cover"><div><strong>Volume 3</strong><span>Women Share How to Learn and Apply AI</span></div></button>
+      <button class="book" type="button" data-vol="4" aria-pressed="false"><img src="img/vol4.jpg" alt="AI Everywhere Volume 4 cover"><div><strong>Volume 4</strong><span>Women Shaping AI in Society &amp; at Home</span></div></button>
+    </div>
+    <p class="note">Read more than one? Do one at a time; each book gets its own review.</p>
+  </section>
+
+  <section class="step" aria-labelledby="s1">
+    <header><span class="num">1</span><h2 id="s1">Jot down what you thought</h2></header>
+    <p class="hint">Messy is fine. Fragments are fine. Tap a prompt if you're stuck.</p>
+    <div class="chips" id="chips">
+      <button class="chip" type="button" data-t="A chapter that stuck with me: ">A chapter that stuck with me</button>
+      <button class="chip" type="button" data-t="Something I tried after reading: ">Something I tried after</button>
+      <button class="chip" type="button" data-t="This book is great for: ">Who it's for</button>
+      <button class="chip" type="button" data-t="What I'd change: ">What I'd change</button>
+      <button class="chip" type="button" data-t="I'd give it __ stars because ">My star rating</button>
+    </div>
+    <label for="notes" class="hint" style="font-weight:600; color:var(--fg);">Your thoughts</label>
+    <textarea id="notes" maxlength="3000" placeholder="e.g. loved the chapter on using AI to plan meals, tried it that week. felt very practical, not hype. good for people just starting out. 4 stars"></textarea>
+  </section>
+
+  <section class="step" aria-labelledby="s2">
+    <header><span class="num">2</span><h2 id="s2">Tidy it up (optional)</h2></header>
+    <p class="hint">Claude can do a light clean: fix spelling and grammar and put your thoughts in order. It keeps your words and your opinion and won't add praise. You can edit the result, or skip this step.</p>
+    <div class="row">
+      <button type="button" id="tidy">Tidy my notes</button>
+      <button type="button" id="skip" class="ghost">Use my notes as they are</button>
+    </div>
+    <p class="note" id="tidyStatus" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="step" aria-labelledby="s3" id="step3" hidden>
+    <header><span class="num">3</span><h2 id="s3">Your review</h2></header>
+    <p class="hint">Edit anything you like. It's yours.</p>
+    <label for="review" class="hint" style="font-weight:600; color:var(--fg);">Review</label>
+    <textarea id="review" maxlength="5000"></textarea>
+    <label class="check"><input type="checkbox" id="disclose" checked><span>Add this line (Goodreads and Amazon expect it for free copies): <em>"I received a free advance copy and am leaving this review voluntarily."</em></span></label>
+    <div class="row">
+      <button type="button" id="copy">Copy my review</button>
+      <span class="note" id="copyStatus" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <section class="step" aria-labelledby="s4" id="step4" hidden>
+    <header><span class="num">4</span><h2 id="s4">Paste it in and pick your stars</h2></header>
+    <div class="platforms">
+      <div class="platform">
+        <b>Goodreads · open now</b>
+        <p class="note">Open the book, choose your star rating, then "Write a review" and paste.</p>
+        <a class="btn" id="grLink" href="#" target="_blank" rel="noopener">Open on Goodreads ↗</a>
+      </div>
+      <div class="platform">
+        <b id="azTitle">Amazon · from Sunday, Nov 1</b>
+        <p class="note" id="azNote">Amazon opens reviews once the book is on sale, Sunday November 1. Keep your copied review and come back then, or paste the same text on launch day.</p>
+        <a class="btn ghost" id="azLink" href="#" target="_blank" rel="noopener">Open on Amazon ↗</a>
+      </div>
+    </div>
+    <p class="note">Thank you. Honest reviews, even short ones, really do help.</p>
+  </section>
+
+  <footer>
+    <p>From the <a href="https://shewritesai.substack.com" target="_blank" rel="noopener">She Writes AI</a> community.</p>
+    <p>What you type here isn't saved. If you use "Tidy my notes," your text goes to Claude (Anthropic) to be tidied and comes straight back to you.</p>
+  </footer>
+</main>
+
+<script>
+(() => {
+  // Fill in the exact book pages when known; until then the buttons open a search.
+  const GOODREADS = { "2": "", "3": "", "4": "" };
+  const AMAZON = { "2": "", "3": "", "4": "" };
+  const RELEASE = new Date("2026-11-01T00:00:00-07:00");
+  const HELPER = "https://zinkjptheyryfpkdwjru.supabase.co/functions/v1/review-helper";
+  const DISCLOSURE = "I received a free advance copy and am leaving this review voluntarily.";
+  const $ = (id) => document.getElementById(id);
+  let vol = "";
+
+  function search(site, v) {
+    const q = encodeURIComponent(`AI Everywhere Volume ${v} Karen Smiley`);
+    return site === "gr" ? `https://www.goodreads.com/search?q=${q}` : `https://www.amazon.com/s?k=${q}`;
+  }
+  function updateLinks() {
+    const v = vol || "2";
+    $("grLink").href = GOODREADS[v] || search("gr", v);
+    $("azLink").href = AMAZON[v] || search("az", v);
+    const live = new Date() >= RELEASE;
+    $("azTitle").textContent = live ? "Amazon · on sale now" : "Amazon · from Sunday, Nov 1";
+    $("azNote").textContent = live ? "Open the book, scroll to Customer reviews, choose \"Write a customer review,\" pick your stars and paste." : "Amazon opens reviews once the book is on sale, Sunday November 1. Keep your copied review and come back then, or paste the same text on launch day.";
+    $("azLink").classList.toggle("off", !live);
+    $("azLink").classList.toggle("ghost", !live);
+    if (!live) $("azLink").setAttribute("aria-disabled", "true"); else $("azLink").removeAttribute("aria-disabled");
+  }
+
+  const params = new URLSearchParams(location.search);
+  function pick(v) {
+    vol = v;
+    document.querySelectorAll(".book").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.vol === v)));
+    updateLinks();
+  }
+  document.querySelectorAll(".book").forEach((b) => b.addEventListener("click", () => pick(b.dataset.vol)));
+  if (["2", "3", "4"].includes(params.get("vol"))) pick(params.get("vol")); else updateLinks();
+
+  $("chips").addEventListener("click", (e) => {
+    const t = e.target.closest(".chip"); if (!t) return;
+    const ta = $("notes"); ta.value = (ta.value.trim() ? ta.value.replace(/\s*$/, "\n") : "") + t.dataset.t; ta.focus();
+  });
+
+  function showReview(text) {
+    $("review").value = text;
+    $("step3").hidden = false; $("step4").hidden = false;
+    $("step3").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  $("skip").addEventListener("click", () => {
+    const n = $("notes").value.trim();
+    if (!n) { $("tidyStatus").className = "note err"; $("tidyStatus").textContent = "Write a few words in step 1 first."; return; }
+    $("tidyStatus").textContent = ""; showReview(n);
+  });
+  $("tidy").addEventListener("click", async () => {
+    const n = $("notes").value.trim(), st = $("tidyStatus");
+    if (n.length < 15) { st.className = "note err"; st.textContent = "Write a few more words in step 1 first, even rough ones."; return; }
+    $("tidy").disabled = true; st.className = "note"; st.textContent = "Tidying… a few seconds.";
+    try {
+      const res = await fetch(HELPER, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ notes: n }) });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.text) throw new Error(data.error || "The helper isn't available right now. You can use your notes as they are.");
+      st.className = "note ok"; st.textContent = "Done. Read it over and change anything that doesn't sound like you.";
+      showReview(data.text);
+    } catch (err) {
+      st.className = "note err"; st.textContent = err.message;
+    } finally { $("tidy").disabled = false; }
+  });
+
+  function finalText() {
+    let t = $("review").value.trim();
+    if ($("disclose").checked && !t.includes(DISCLOSURE)) t += (t ? "\n\n" : "") + DISCLOSURE;
+    return t;
+  }
+  $("copy").addEventListener("click", async () => {
+    const t = finalText();
+    try { await navigator.clipboard.writeText(t); $("copyStatus").className = "note ok"; $("copyStatus").textContent = "Copied! Now open Goodreads below and paste."; }
+    catch { $("review").value = t; $("review").select(); $("copyStatus").className = "note"; $("copyStatus").textContent = "Selected. Press Cmd+C (or Ctrl+C) to copy."; }
+  });
+})();
+</script>
+</body>
+</html>

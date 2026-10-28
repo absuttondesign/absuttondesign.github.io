@@ -143,7 +143,7 @@ footer a { color: var(--accent); }
 (() => {
   // Fill in the exact book pages when known; until then the buttons open a search.
   const GOODREADS = { "2": "https://www.goodreads.com/book/show/260594426-ai-everywhere-volume-2", "3": "https://www.goodreads.com/book/show/260742761-ai-everywhere-volume-3", "4": "https://www.goodreads.com/book/show/260742204-ai-everywhere-volume-4" };
-  const AMAZON = { "2": "", "3": "", "4": "" };
+  const AMAZON = { "2": "https://www.amazon.com/review/create-review?asin=B0HMGBBJJJ", "3": "", "4": "" };  // review-form links; a volume with a link is open for Amazon reviews
   const RELEASE = new Date("2026-11-01T00:00:00-07:00");
   const HELPER = "https://zinkjptheyryfpkdwjru.supabase.co/functions/v1/review-helper";
   const DISCLOSURE = "I received a free advance copy and am leaving this review voluntarily.";
@@ -158,9 +158,9 @@ footer a { color: var(--accent); }
     const v = vol || "2";
     $("grLink").href = GOODREADS[v] || search("gr", v);
     $("azLink").href = AMAZON[v] || search("az", v);
-    const live = new Date() >= RELEASE;
+    const live = !!AMAZON[v] || new Date() >= RELEASE;
     $("azTitle").textContent = live ? "Amazon · on sale now" : "Amazon · from Sunday, Nov 1";
-    $("azNote").textContent = live ? "Open the book, scroll to Customer reviews, choose \"Write a customer review,\" pick your stars and paste." : "Amazon opens reviews once the book is on sale, Sunday November 1. Keep your copied review and come back then, or paste the same text on launch day.";
+    $("azNote").textContent = live ? "Sign in to Amazon if asked, pick your stars and paste your review." : "Amazon opens reviews once the book is on sale, Sunday November 1. Keep your copied review and come back then, or paste the same text on launch day.";
     $("azLink").classList.toggle("off", !live);
     $("azLink").classList.toggle("ghost", !live);
     if (!live) $("azLink").setAttribute("aria-disabled", "true"); else $("azLink").removeAttribute("aria-disabled");

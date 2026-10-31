@@ -67,7 +67,7 @@ footer a { color: var(--accent); }
   <header>
     <div class="eyebrow">She Writes AI · AI Everywhere</div>
     <h1>Thank you for reading! Two minutes to help these books find readers?</h1>
-    <p class="lede">32 women and nonbinary authors from 18 countries wrote these three volumes. Early reviews are what make new readers trust a book. Yours doesn't need to be long or polished. This page walks you through it.</p>
+    <p class="lede">32 women and nonbinary writers from 29 countries wrote these three volumes. Early reviews are what make new readers trust a book. Yours doesn't need to be long or polished. This page walks you through it.</p>
   </header>
 
   <section aria-labelledby="pickH" style="display:grid; gap:12px;">
@@ -127,7 +127,7 @@ footer a { color: var(--accent); }
       <div class="platform">
         <b id="azTitle">Amazon · from Sunday, Nov 1</b>
         <p class="note" id="azNote">You can buy it now, but Amazon opens reviews on release day, Sunday November 1. Keep your copied review and come back then to paste the same text.</p>
-        <div class="row"><a class="btn ghost" id="azLink" href="#" target="_blank" rel="noopener">Review the paperback ↗</a><a class="btn ghost" id="kdLink" href="#" target="_blank" rel="noopener">Review the Kindle edition ↗</a></div>
+        <div class="row"><a class="btn ghost" id="azLink" href="#" target="_blank" rel="noopener">Review the paperback ↗</a><a class="btn ghost" id="hdLink" href="#" target="_blank" rel="noopener">Review the hardcover ↗</a><a class="btn ghost" id="kdLink" href="#" target="_blank" rel="noopener">Review the Kindle edition ↗</a></div>
         <p class="note">Pick the edition you read. One review is plenty.</p>
       </div>
     </div>
@@ -144,7 +144,8 @@ footer a { color: var(--accent); }
 (() => {
   // Fill in the exact book pages when known; until then the buttons open a search.
   const GOODREADS = { "2": "https://www.goodreads.com/book/show/260594426-ai-everywhere-volume-2", "3": "https://www.goodreads.com/book/show/260742761-ai-everywhere-volume-3", "4": "https://www.goodreads.com/book/show/260742204-ai-everywhere-volume-4" };
-  const AMAZON = { "2": "https://www.amazon.com/review/create-review?asin=B0HMGBBJJJ", "3": "https://www.amazon.com/review/create-review?asin=B0HMGLY52N", "4": "https://www.amazon.com/review/create-review?asin=B0HMGB6HXJ" };
+  const AMAZON = { "2": "https://www.amazon.com/review/create-review?asin=B0HMGBBJJJ", "3": "https://www.amazon.com/review/create-review?asin=B0HMGCM4YC", "4": "https://www.amazon.com/review/create-review?asin=B0HMGCCXXR" };  // paperbacks
+  const HARDCOVER = { "2": "https://www.amazon.com/review/create-review?asin=B0HMGHK7RQ", "3": "https://www.amazon.com/review/create-review?asin=B0HMGLY52N", "4": "https://www.amazon.com/review/create-review?asin=B0HMGB6HXJ" };  // per Amazon format selector, 10/31
   // Kindle editions aren't linked to the paperbacks on Amazon yet (10/28), so each has its own reviews.
   const KINDLE = { "2": "https://www.amazon.com/review/create-review?asin=B0HMBJHQPW", "3": "https://www.amazon.com/review/create-review?asin=B0HMFRJYK5", "4": "https://www.amazon.com/review/create-review?asin=B0HMNWLLL4" };  // review-form links, used from release day
   const RELEASE = new Date("2026-11-01T00:00:00-07:00");
@@ -165,7 +166,8 @@ footer a { color: var(--accent); }
     $("azTitle").textContent = live ? "Amazon · on sale now" : "Amazon · from Sunday, Nov 1";
     $("azNote").textContent = live ? "Sign in to Amazon if asked, pick your stars and paste your review." : "You can buy it now, but Amazon opens reviews on release day, Sunday November 1. Keep your copied review and come back then to paste the same text.";
     $("kdLink").href = KINDLE[v] || search("az", v);
-    for (const id of ["azLink", "kdLink"]) {
+    $("hdLink").href = HARDCOVER[v] || search("az", v);
+    for (const id of ["azLink", "hdLink", "kdLink"]) {
       $(id).classList.toggle("off", !live);
       $(id).classList.toggle("ghost", !live);
       if (!live) $(id).setAttribute("aria-disabled", "true"); else $(id).removeAttribute("aria-disabled");
